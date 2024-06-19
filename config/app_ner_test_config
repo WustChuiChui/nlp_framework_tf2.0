@@ -1,0 +1,40 @@
+{
+    "task_info":{
+        "name":"app_ner_test_task",
+        "task":"ner",
+        "version":"v1.5"
+    },
+    "corpus_info":{
+        "train_data_file":"/Users/wangjia/nlp_task_corpus/data/smart_app/train_data_2.csv",
+        "dev_data_file":"/Users/wangjia/nlp_task_corpus/data/smart_app/dev_data_2.csv",
+        "test_data_file":"/Users/wangjia/nlp_task_corpus/data/smart_app/test_data_2.csv"
+    },
+    "trainer_info":{
+        "data_processor":"NerDataPreprocess",
+        "trainer":"NerTrainerV2",
+        "mode":"train",
+        "epochs":20,
+        "batch_size":256,
+        "learning_rate":1e-4,
+        "results_dir":"./results/",
+        "checkpoint_path":"save_model_dir/cp-model.ckpt",
+        "saved_model_path":"saved_model/model"
+    },
+	"encoder_info":{
+	    "encoder":"NerEncoderV2",
+        "max_seq_len":16,
+        "layers":["inputs", "albert", "lstm", "dense"],
+        "vocab_size":21128,
+        "embedding":"WordEmbedding",
+        "embedding_dims":32,
+        "repeat_times":4,
+        "filter_width":3,
+        "num_layers":[1,1,2],
+        "num_filters":64,
+        "dim_model":16,
+        "num_heads":4,
+        "tag_class_num":4,
+        "hidden_size":32,
+        "kernel_sizes":[3,4,5]
+	}
+}

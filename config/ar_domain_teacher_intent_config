@@ -1,0 +1,36 @@
+{
+    "task_info":{
+        "name":"ar_domain_teacher_intent",
+        "task":"classify",
+        "version":"v1.5"
+    },
+    "corpus_info":{
+        "train_data_file":"/Users/wangjia/nlp_task_corpus/data/ar_domain/train_data.csv",
+        "dev_data_file":"/Users/wangjia/nlp_task_corpus/data/ar_domain/dev_data.csv",
+        "test_data_file":"/Users/wangjia/nlp_task_corpus/data/ar_domain/test_data.csv"
+    },
+    "trainer_info":{
+        "data_processor":"ClassifyDataPreprocess",
+        "trainer":"ClassifyTrainer",
+        "mode":"train",
+        "epochs":5,
+        "batch_size":64,
+        "learning_rate":1e-4,
+        "results_dir":"./results/",
+        "checkpoint_path":"save_model_dir/cp-model.ckpt",
+        "saved_model_path":"saved_model/model"
+    },
+	"encoder_info":{
+	    "encoder":"ClassifierEncoder",
+	    "layers":["inputs", "albert", "lstm", "dense", "pools1d"],
+	    "bert":"albert_tiny_489k",
+        "max_seq_len":16,
+        "embedding":"WinPoolEmbedding",
+        "embedding_dims":128,
+        "dim_model":128,
+        "num_heads":16,
+        "vocab_size":21128,
+        "intent_class_num":9,
+        "hidden_size":128
+	}
+}

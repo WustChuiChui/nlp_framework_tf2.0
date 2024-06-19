@@ -1,0 +1,36 @@
+{
+    "task_info":{
+        "name":"arbitrator_intent_classification",
+        "task":"classify",
+        "version":"v1.4"
+    },
+    "corpus_info":{
+        "train_data_file":"./data/arbitrator/train_data.csv",
+        "dev_data_file":"./data/arbitrator/dev_data.csv",
+        "test_data_file":"./data/arbitrator/test_data.csv"
+    },
+    "trainer_info":{
+        "data_processor":"ClassifyDataPreprocess",
+        "trainer":"ClassifyTrainer",
+        "mode":"train",
+        "epochs":3,
+        "batch_size":64,
+        "learning_rate":1e-4,
+        "results_dir":"./results/",
+        "checkpoint_path":"save_model_dir/cp-model.ckpt",
+        "saved_model_path":"saved_model/model"
+    },
+	"encoder_info":{
+	     "encoder":"DNN",
+         "max_seq_len":32,
+         "vocab_size":21128,
+         "embedding":"WordEmbedding",
+         "embedding_dims":128,
+         "class_num":4,
+         "filters":128,
+         "activation":"relu",
+         "kernel_sizes":[3,4,5],
+         "kernel_regularizer":"",
+         "last_activation":"softmax"
+	}
+}

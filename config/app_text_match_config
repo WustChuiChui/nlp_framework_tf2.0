@@ -1,0 +1,33 @@
+{
+    "task_info":{
+        "name":"app_text_match",
+        "task":"text_match",
+        "version":"v3.0"
+    },
+    "corpus_info":{
+        "train_data_file":"data/sim/text_match_196532.csv",
+        "dev_data_file":"data/sim/text_match_196532.csv",
+        "test_data_file":"data/sim/text_match_196532.csv"
+    },
+    "trainer_info":{
+        "data_processor":"TextMatchDataPreprocess",
+        "trainer":"TextMatchTrainer",
+        "mode":"train",
+        "epochs":3,
+        "batch_size":64,
+        "learning_rate":5e-5,
+        "results_dir":"./results/",
+        "checkpoint_path":"save_model_dir/cp-model.ckpt",
+        "saved_model_path":"saved_model/model"
+    },
+	"encoder_info":{
+         "encoder":"TextMatchEncoder",
+         "bert":"albert_tiny_489k",
+         "max_seq_len":32,
+         "layers":["inputs", "albert", "dense", "pools1d"],
+         "vocab_size":21128,
+         "embedding":"WordEmbedding",
+         "embedding_dims":64,
+         "hidden_size":64
+	}
+}

@@ -1,0 +1,33 @@
+{
+    "task_info":{
+        "name":"ar_domain_student_intent",
+        "task":"match",
+        "version":"v1.0"
+    },
+    "corpus_info":{
+        "train_data_file":"/Users/wangjia/nlp_task_corpus/data/ar_domain/train_data.csv",
+        "dev_data_file":"/Users/wangjia/nlp_task_corpus/data/ar_domain/dev_data.csv",
+        "test_data_file":"/Users/wangjia/nlp_task_corpus/data/ar_domain/test_data.csv",
+        "intent_feature_json":"/Users/wangjia/nlp_task_corpus/data/ar_domain/intent_feature_json"
+    },
+    "trainer_info":{
+        "data_processor":"ClassifyDataPreprocess",
+        "trainer":"StudentMatchTrainer",
+        "mode":"train",
+        "epochs":4,
+        "batch_size":64,
+        "learning_rate":1e-4,
+        "results_dir":"./results/",
+        "checkpoint_path":"save_model_dir/cp-model.ckpt",
+        "saved_model_path":"saved_model/model"
+    },
+	"encoder_info":{
+	     "encoder":"ClassifierEncoder",
+	     "bert":"albert_tiny",
+	     "layers":["inputs", "albert", "lamda", "dense"],
+         "max_seq_len":16,
+         "vocab_size":21128,
+         "intent_class_num":9,
+         "hidden_size":64
+	}
+}

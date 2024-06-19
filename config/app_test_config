@@ -1,0 +1,41 @@
+{
+    "task_info":{
+        "name":"app_domain_multi_task",
+        "task":"joint_learning",
+        "version":"v1.1"
+    },
+    "corpus_info":{
+        "train_data_file":"/Users/wangjia/nlp_task_corpus/data/smart_app/train_data.csv",
+        "dev_data_file":"/Users/wangjia/nlp_task_corpus/data/smart_app/dev_data.csv",
+        "test_data_file":"/Users/wangjia/nlp_task_corpus/data/smart_app/test_data.csv"
+    },
+    "trainer_info":{
+        "data_processor":"JointLearningDataPreprocess",
+        "trainer":"JointLearningTrainer",
+        "mode":"train",
+        "epochs":2,
+        "batch_size":64,
+        "learning_rate":1e-4,
+        "results_dir":"./results/",
+        "checkpoint_path":"save_model_dir/cp-model.ckpt",
+        "saved_model_path":"saved_model/model"
+    },
+	"encoder_info":{
+	     "encoder":"JointLearningEncoder",
+         "max_seq_len":16,
+         "layers":["inputs", "albert", "lstm"],
+         "vocab_size":21128,
+         "embedding":"WordEmbedding",
+         "embedding_dims":32,
+         "repeat_times":4,
+         "filter_width":3,
+         "num_layers":[1,1,2],
+         "num_filters":64,
+         "dim_model":16,
+         "num_heads":4,
+         "intent_class_num":3,
+         "tag_class_num":4,
+         "hidden_size":32,
+         "kernel_sizes":[3,4,5]
+	}
+}
